@@ -34,14 +34,14 @@ By loading `html-imports.js` in the `<head>` of the document, the body of the do
 
 ## [Feature roadmap](feature-roadmap)
 
-- [x] `<html-imports></html-imports>`
-
-  The `<html-imports>` element allows you to define a list of custom HTML elements to import from a remote or local source through the attribute `src`. You can also override the imported component's name through the `name` attribute.
+- [x] `<imports><imports>`
+      
+  The `<imports>` element allows you to define a list of custom HTML elements to import from a remote or local source through the attribute `src`. You can also override the imported component's name through the `name` attribute.
   
   Example:
   
   ```html
-  <html-imports cors="false" base="./">
+  <imports cors="false">
       <!-- imports go here -->
   </html-imports>
   ```
@@ -53,7 +53,7 @@ By loading `html-imports.js` in the `<head>` of the document, the body of the do
   Example:
 
   ```html
-  <html-imports base="./">
+  <imports>
     <component src="card.html" name="my-card"></component>
     <component src="list.html" name="my-list"></component>
     
@@ -61,15 +61,32 @@ By loading `html-imports.js` in the `<head>` of the document, the body of the do
     <!-- ... uses the tag <cool-button></cool-button>, the    ... -->
     <!-- ... this element becomes available under will not change -->
     <component src="button.html"></component>
-  </html-imports>
+  </imports>
 
   ```
 
-- [x] Inline method definitions inside <component> definitions
-
+- [x] Inline methods inside <component> definitions
+  
   Enable inline method definitions that are automatically assigned to the custom element's constructor once parsed.
+
+  ```jsx
+  <my-hotbar>
+    <div class="hotbar-items">
+        <slot></slot>
+    </div>
+
+    // This is automatically called when the element is connected to the DOM. 
+    <connected ()>
+      test("Hello ", "world", "!");
+    </connected>
+
+    <test (a,b,c)>
+      console.log(a, b, c);
+    </test>
+  </my-hotbar>
+  ```
     
-- [ ] Custom syntax parser
+- [ ] Custom DOM syntax parser
 
   Create a custom syntax parser for invalid HTML markup that the browser discards as either a comment node or treats as a text node.
 

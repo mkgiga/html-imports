@@ -1,6 +1,6 @@
 # html-imports
 
-I started this project because I wanted a simple, dependency-free, client-side solution for creating modular, reusable HTML elements that didn't require any transpiler/preprocessing metaframeworks. **This library is experimental, so use it at your own discretion!** That being said, I hope someone will like this.
+I started this project because I wanted a simple, dependency-free, client-side solution for creating modular, reusable HTML elements that didn't require any transpiler/preprocessing metaframeworks. **This library is experimental, so use it at your own discretion!** That being said, if you end up playing around with this thing, I hope you end up liking it! :D
 
 ## Table of contents
 

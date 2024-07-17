@@ -1,0 +1,50 @@
+<x-toolbar>
+  <!-- testing support for having the custom element exist as the outermost element directly -->
+
+  <style>
+    :host > .toolbar-items {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+
+      background-color: #333;
+      color: white;
+      padding: 10px;
+    }
+
+    :host > slot[name="left"] {
+      grid-column: 1;
+    }
+
+    :host > slot[name="right"] {
+      grid-column: 3;
+    }
+
+    :host > slot:not([name]) {
+      grid-column: 2;
+      width: 100%;
+    }
+    
+  </style>
+
+  <div class="toolbar-items">
+    <slot name="left"></slot>
+    <slot exportparts=""></slot>
+    <slot name="right"></slot>
+  </div>
+
+  <connected ()>
+    console.log("The element has been connected to the DOM.");
+    this.testmethod("hello", "world", "!");
+  </connected>
+
+  <disconnected ()>
+    console.log("The element has been disconnected from the DOM.");
+  </disconnected>
+
+  
+  <testmethod (a,b,c)>
+    console.log(a,b,c);
+    console.log(this);
+  </testmethod>
+
+</x-toolbar>

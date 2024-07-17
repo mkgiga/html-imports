@@ -1,0 +1,22 @@
+<invalid-syntax-experiment>
+  
+  <!-- The browser (at least chromium) turns invalid html tags into a #Text nodes               -->
+  <!-- and (sometimes) comment nodes (i think when an invalid closing tag is found)             -->
+  <!-- This file is used to experiment with the browser's parsing of comments                   -->
+  <!-- And testing the plausability of using custom syntax within HTML tags.                    -->
+  <!--                                                                                          -->
+  <!--   Examples:                                                                              -->
+  <!--                                                                                          -->
+  <!--   <@click> /* callback code here */ </@click>                                            -->
+  <!--   <<event> /* callback code here */ </<event>>                                           -->
+  <!--   < callAFunctionWhenParsedInternally() />                                               -->
+  <!--                                                                                          -->
+
+
+  <@click>
+    console.log("Hello, world!");
+  </@click>
+  
+  <slot></slot>
+
+</invalid-syntax-experiment>

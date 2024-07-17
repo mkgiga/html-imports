@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<!--                                [ html-imports ]                                        -->
+<!--                                                                                        -->
+<!--    This is just a little test file used to develop my library html-imports             -->
+<!--    It's a simple client-side solution for importing reusable html elements which       -->
+<!--    can be used to create web components directly inside your html files, without       -->
+<!--    relying on something like React, Angular or Vue.                                    -->
+<!--                                                                                        -->
+<!--    The library is still in development and not ready for use in production, but        -->
+<!--    feel free to use it in your projects and tell me what you think! :D                 -->
+<!--                                                                                        -->
+<!--    @author: mk-giga                                                                    -->
+<!--    @version: 0.4.1                                                                     -->
+<!--    @license: MIT                                                                       -->
+<!--                                                                                        -->
+<!--    For more information, visit the project repository at: /mk-giga/html-imports        -->
+<!--                                                                                        -->
+<!--                                                                                        -->
+
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>html-imports.js</title>
+    <link rel="stylesheet" href="/style.css" />
+    <script src="../html-imports.js"></script>
+
+  </head>
+
+  <body>
+    
+    <imports>
+      <component src="./components/invalid-syntax-experiment.html"></component>
+      <component src="./components/cool-template.html"></component>
+      <component src="./components/x-hotbar.html"></component>
+      <component src="./components/x-toolbar.html" name="renamed-toolbar"></component>
+
+      <component>
+        <test-component>
+          <div class="container">
+            <style>
+              :host {
+                display: block;
+                padding: 0.25rem;
+                border: 1px solid #ccc;
+                border-radius: 0.125rem;
+                margin-bottom: 0.5rem;
+              }
+            </style>
+            <h1>Test Component</h1>
+            <slot></slot>
+          </div>
+        </test-component>
+      </component>
+
+    </imports>
+
+
+    <x-toolbar>
+      <p>
+        This is a paragraph in the default slot. No slot attribute is needed.
+      </p>
+
+      <p slot="left">
+        This is a paragraph in the left slot.
+      </p>
+
+      <p slot="right">
+        This is a paragraph in the right slot.
+      </p>
+    </x-toolbar>
+
+    <script src="/main.js" type="module"></script>
+  </body>
+
+</html>

@@ -1,6 +1,6 @@
 # html-imports
 
-I started this project because I wanted a simple, dependency-free, client-side solution for creating modular, reusable HTML elements that didn't require any transpiler/preprocessing metaframeworks. **This library is experimental, so use it at your own discretion!** That being said, if you end up playing around with this thing, I hope you end up liking it! :D
+This is a client-side framework that allows you to create and import reusable HTML elements, directly inside the HTML markup itself -- no JavaScript required.
 
 ## Table of contents
 
@@ -34,14 +34,14 @@ By loading `html-imports.js` in the `<head>` of the document, the body of the do
 
 ## [Feature roadmap](feature-roadmap)
 
-- [x] `<html-imports></html-imports>`
-
-  The `<html-imports>` element allows you to define a list of custom HTML elements to import from a remote or local source through the attribute `src`. You can also override the imported component's name through the `name` attribute.
+- [x] `<imports><imports>`
+      
+  The `<imports>` element allows you to define a list of custom HTML elements to import from a remote or local source through the attribute `src`. You can also override the imported component's name through the `name` attribute.
   
   Example:
   
   ```html
-  <html-imports cors="false" base="./">
+  <imports cors="false">
       <!-- imports go here -->
   </html-imports>
   ```
@@ -53,7 +53,7 @@ By loading `html-imports.js` in the `<head>` of the document, the body of the do
   Example:
 
   ```html
-  <html-imports base="./">
+  <imports>
     <component src="card.html" name="my-card"></component>
     <component src="list.html" name="my-list"></component>
     
@@ -61,7 +61,39 @@ By loading `html-imports.js` in the `<head>` of the document, the body of the do
     <!-- ... uses the tag <cool-button></cool-button>, the    ... -->
     <!-- ... this element becomes available under will not change -->
     <component src="button.html"></component>
-  </html-imports>
+  </imports>
 
   ```
 
+- [x] Inline methods inside <component> definitions
+  
+  Enable inline method definitions that are automatically assigned to the custom element's constructor once parsed.
+
+  ```jsx
+  <my-hotbar>
+    <div class="hotbar-items">
+        <slot></slot>
+    </div>
+
+    // This is automatically called when the element is connected to the DOM. 
+    <connected ()>
+      test("Hello ", "world", "!");
+    </connected>
+
+    <test (a,b,c)>
+      console.log(a, b, c);
+    </test>
+  </my-hotbar>
+  ```
+    
+- [ ] Custom DOM syntax parser
+
+  Create a custom syntax parser for invalid HTML markup that the browser discards as either a comment node or treats as a text node.
+
+  There are a couple of use-cases for this.
+  1. Allowing the user to define non-anonymous event listeners inside the component files. e.g. `<@click> // js code here </@click>`
+  2. Extra templating functionality, such as placing anchors/markers within the element which could be replaced by the value of an attribute with the same name as the marker.
+  3. Anything else that the browser doesn't let you do with HTML.
+
+  Since this would come with some performance overhead, there should probably be a release with this feature turned off.
+  

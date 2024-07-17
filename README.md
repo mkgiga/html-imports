@@ -1,6 +1,6 @@
 # html-imports
 
-I started this project because I wanted a simple, dependency-free, client-side solution for creating modular, reusable HTML elements that didn't require any transpiler/preprocessing metaframeworks. **This library is experimental, so use it at your own discretion!** That being said, if you end up playing around with this thing, I hope you end up liking it! :D
+This is a client-side framework that allows you to create and import reusable HTML elements, directly inside the HTML markup itself -- no JavaScript required.
 
 ## Table of contents
 
